@@ -32,6 +32,7 @@ E = MetoData.iloc[-(len(Qdr) +1): -1, 2]        # Evaporation  [m/day]
 
 # Definition of rate equation 
 def dydt(t,S):
+  """Return the rate of change of storages"""
   Scl = S[0]
   Swb = S[1]
   Seff_cl = (Scl - Sclmin)/(Sclmax - Sclmin)
