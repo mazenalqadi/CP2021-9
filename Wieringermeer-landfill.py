@@ -26,7 +26,7 @@ MetoData = pd.read_excel ('C:/Users/mazen/Desktop/MetoData.xlsx', index_col = 0)
 
 #Matching the database: Data with the same date for leachate (Qdr), Rainfall ((Jrf), and Evaporation (E)
 
-Qdr = LeachateData.iloc[:, 1]                   # leachate output in [m^3/day]
+Qdr = LeachateData.iloc[:, 0]                   # leachate output in [m^3/day]
 Jrf = MetoData.iloc[-len(Qdr) + 1 : -1, 1]      # Precipitation [m/day]
 pE = MetoData.iloc[-(len(Qdr) +1): -1, 2]        # Evaporation  [m/day]
 
