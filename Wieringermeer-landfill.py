@@ -9,7 +9,7 @@
   # Q_dr    = Leachate production 
 
 #Initialization of the code
-import pandas as dp
+import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy as sp
