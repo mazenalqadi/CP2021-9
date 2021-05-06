@@ -20,6 +20,8 @@ import scipy.integrate as spint
 # Matching the data set so data for the same dates are used for rainfall and leacheate:
 
 # Calling the database
+URL_MetoData = "https://github.com/mazenalqadi/CP2021-9/blob/main/MetoData.xlsx?raw=true"
+df = pd.read_excel(URL_MetoData)
 
 LeachateData = pd.read_excel ('C:/Users/mazen/Desktop/LeachateData.xlsx', index_col = 0)
 MetoData = pd.read_excel ('C:/Users/mazen/Desktop/MetoData.xlsx', index_col = 0)
@@ -33,23 +35,23 @@ pE = MetoData.iloc[-(len(Qdr) +1): -1, 2]        # Evaporation  [m/day]
 # Definition of rate equation 
 def dydt(t,S):
   """Return the rate of change of storages"""
-  Scl = S[0]
-  Swb = S[1]
+    Scl = S[0]
+    Swb = S[1]
   
-  Seff_cl = (Scl - Sclmin)/(Sclmax - Sclmin)
-  Lcl = acl * Seff_cl**bcl
+    Seff_cl = (Scl - Sclmin)/(Sclmax - Sclmin)
+    Lcl = acl * Seff_cl**bcl
   
-  Seff_wb = (Swb - Swbmin)/(Swbmax - Swbmin)
-  Lwb = awb * Seff_wb**bwb
+    Seff_wb = (Swb - Swbmin)/(Swbmax - Swbmin)
+    Lwb = awb * Seff_wb**bwb
   
-  E = pE * Cf *fred
-  Beta = Beta0 * Seff_cl
+    E = pE * Cf *fred
+    Beta = Beta0 * Seff_cl
   
   # Equations
-  dScldt = Jrf - Lcl - E
-  dSwbdt = (1 - Beta) * Lcl - Lwb
+    dScldt = Jrf - Lcl - E
+    dSwbdt = (1 - Beta) * Lcl - Lwb
 
-  return np.array([dScldt, dSwbdt,Qdr])
+    return np.array([dScldt, dSwbdt,Qdr])
 
 # Definition of parameters
 
